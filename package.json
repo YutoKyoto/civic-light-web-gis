@@ -1,0 +1,40 @@
+{
+  "name": "civic-light-web-gis",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@turf/turf": "^7.2.0",
+    "chart.js": "^4.4.9",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.1",
+    "leaflet": "^1.9.4",
+    "leaflet.heat": "^0.2.0",
+    "lucide-react": "^0.468.0",
+    "papaparse": "^5.5.3",
+    "react": "^18.3.1",
+    "react-chartjs-2": "^5.3.0",
+    "react-dom": "^18.3.1",
+    "react-leaflet": "^4.2.1",
+    "tokml": "^0.4.0",
+    "togeojson": "^0.16.0",
+    "zustand": "^4.5.7"
+  },
+  "devDependencies": {
+    "@types/geojson": "^7946.0.16",
+    "@types/leaflet": "^1.9.17",
+    "@types/leaflet.heat": "^0.2.4",
+    "@types/papaparse": "^5.3.16",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.8.3",
+    "vite": "^5.4.19"
+  }
+}
