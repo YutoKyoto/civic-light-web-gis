@@ -2,6 +2,15 @@
 
 ひなたGISを複製せず、自治体・教育・研究・防災・地域分析で使える軽量ブラウザ完結型Web GISとして実装したReact/TypeScriptアプリです。
 
+## 公開URL
+
+GitHub Pages:
+
+https://YutoKyoto.github.io/civic-light-web-gis/
+
+`main` ブランチへpushすると、GitHub Actionsで自動ビルドされ、GitHub Pagesへ公開されます。
+リポジトリの Settings > Pages で Source が `GitHub Actions` になっていることを確認してください。
+
 ## 1. ディレクトリ構成
 
 ```text
@@ -92,6 +101,12 @@ outputs/
 ```bash
 pnpm install
 pnpm dev
+```
+
+GitHub Pages用にビルドする場合:
+
+```bash
+pnpm build
 ```
 
 この環境では以下で検証済みです。
