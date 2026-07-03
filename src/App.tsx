@@ -49,13 +49,13 @@ export default function App() {
         <header className="topbar">
           <SearchBar />
         </header>
-        <aside className="left-panel" aria-label="レイヤーパネル">
+        <aside className="left-panel" aria-label="背景地図とオルソ画像レイヤー">
           <LayerPanel />
         </aside>
         <main className="map-stage" id="map-export-target">
           {compareMode ? <CompareMap /> : <MainMap mapId="primary" />}
         </main>
-        <aside className="right-panel" aria-label="ツールパネル">
+        <aside className="right-panel" aria-label="オルソ画像追加と比較">
           <ToolPanel />
         </aside>
         <footer className="statusbar">

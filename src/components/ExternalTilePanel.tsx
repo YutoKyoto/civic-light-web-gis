@@ -151,15 +151,15 @@ export function ExternalTilePanel() {
   return (
     <section className="panel-section external-tile-section">
       <div className="panel-heading">
-        <h2>外部タイル追加</h2>
+        <h2>オルソ画像追加</h2>
       </div>
       <form className="external-tile-form" onSubmit={runPreview}>
         <label className="field">
-          レイヤー名
+          オルソ画像名
           <input value={name} onChange={(event) => setName(event.target.value)} placeholder="例: OAM drone orthophoto" />
         </label>
         <label className="field">
-          XYZ/TMS URL
+          XYZ/TMSタイルURL
           <input
             value={urlTemplate}
             onChange={(event) => setUrlTemplate(event.target.value)}
@@ -225,30 +225,31 @@ export function ExternalTilePanel() {
         <div className="button-row">
           <button type="submit" title="現在の地図中心とズームから1枚のタイルURLを生成して読み込みテスト">
             {loading ? <Loader2 size={16} aria-hidden className="spin" /> : <ImagePlus size={16} aria-hidden />}
-            プレビュー
+            タイル検証
           </button>
           <button type="button" onClick={addExternalTile} title="検証結果を保存し、表示ONでレイヤーパネルへ追加">
             <CheckCircle2 size={16} aria-hidden />
-            追加
+            表示追加
           </button>
           <button type="button" onClick={zoomToTileArea} title="中心座標またはbboxへ移動">
             <MapPinned size={16} aria-hidden />
-            範囲へ移動
+            撮影範囲へ移動
           </button>
         </div>
         <button type="button" className="wide-action" onClick={startDroneCompare} title="地理院標準地図と航空写真を左右にした比較モードを開始">
-          地理院地図と比較
+          地理院地図と2画面比較
         </button>
       </form>
 
-      <ValidationView diagnostics={validation} />
+      <ValidationView diagnostics={validation} visible={urlTemplate.trim().length > 0} />
       {preview ? <PreviewView preview={preview} /> : null}
       {message ? <p className={preview?.ok ? "notice" : "notice"}>{message}</p> : null}
     </section>
   );
 }
 
-function ValidationView({ diagnostics }: { diagnostics: ReturnType<typeof validateTileTemplate> }) {
+function ValidationView({ diagnostics, visible }: { diagnostics: ReturnType<typeof validateTileTemplate>; visible: boolean }) {
+  if (!visible) return null;
   if (diagnostics.status === "unchecked" && !diagnostics.warnings.length) return null;
   return (
     <div className={`validation-box ${diagnostics.status}`}>

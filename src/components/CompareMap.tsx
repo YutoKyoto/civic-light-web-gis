@@ -25,11 +25,11 @@ export function CompareMap() {
         比較解除
       </button>
       <div className="compare-pane">
-        <span className="compare-label">左: 主背景</span>
+        <span className="compare-label">左: 地理院地図・OSM</span>
         <MainMap mapId="compare-left" baseMapOverride={selectedBaseMap} externalTileMode="none" />
       </div>
       <div className="compare-pane">
-        <span className="compare-label">右: 比較背景</span>
+        <span className="compare-label">右: オルソ画像重ね合わせ</span>
         <MainMap mapId="compare-right" baseMapOverride={compareBaseMapId} externalTileMode={compareTileLayerId ? "only" : "all"} externalTileLayerId={compareTileLayerId} />
       </div>
     </div>

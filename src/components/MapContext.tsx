@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useMemo, useRef } from "react";
 import type { ReactNode } from "react";
 import type L from "leaflet";
 
@@ -11,16 +11,20 @@ interface MapRegistry {
 const Context = createContext<MapRegistry | null>(null);
 
 export function MapProvider({ children }: { children: ReactNode }) {
-  const [maps, setMaps] = useState<Record<string, L.Map | undefined>>({});
+  const mapsRef = useRef<Record<string, L.Map | undefined>>({});
+  const setMap = useCallback((id: string, map?: L.Map) => {
+    mapsRef.current = { ...mapsRef.current, [id]: map };
+  }, []);
+  const flyTo = useCallback((lat: number, lng: number, zoom = 15) => {
+    Object.values(mapsRef.current).forEach((map) => map?.flyTo([lat, lng], zoom));
+  }, []);
   const value = useMemo<MapRegistry>(
     () => ({
-      maps,
-      setMap: (id, map) => setMaps((current) => ({ ...current, [id]: map })),
-      flyTo: (lat, lng, zoom = 15) => {
-        Object.values(maps).forEach((map) => map?.flyTo([lat, lng], zoom));
-      }
+      maps: mapsRef.current,
+      setMap,
+      flyTo
     }),
-    [maps]
+    [flyTo, setMap]
   );
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
