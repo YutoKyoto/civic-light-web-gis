@@ -9,8 +9,6 @@ GitHub Pages:
 
 https://YutoKyoto.github.io/civic-light-web-gis/
 
-`main` ブランチへpushすると、GitHub Actionsで自動ビルドされ、GitHub Pagesへ公開されます。
-リポジトリの Settings > Pages で Source を `Deploy from a branch`、Branch を `gh-pages`、Folder を `/ (root)` にしてください。
 
 ## 1. ディレクトリ構成
 
@@ -118,11 +116,4 @@ node node_modules/typescript/bin/tsc --noEmit
 node node_modules/vite/bin/vite.js build
 ```
 
-## 7. 今後の拡張方法
 
-- `data/disasterLayers.ts` に防災・地域分析レイヤーカタログを追加
-- `utils/geo.ts` にTurf.js解析関数を追加
-- `ToolPanel.tsx` に解析UIを追加
-- WMS/XYZ/ベクトルタイル対応は `AppLayer.type` と `MainMap.tsx` のレンダラを拡張
-- 標高断面図は作図ラインをサンプリングして `utils/elevation.ts` で標高取得し、Chart.jsで描画
-- 3D地形表示はCesiumJSを遅延読み込みし、右ツールパネルからモード切替する構成が適しています
