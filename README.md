@@ -9,7 +9,7 @@ GitHub Pages:
 https://YutoKyoto.github.io/civic-light-web-gis/
 
 `main` ブランチへpushすると、GitHub Actionsで自動ビルドされ、GitHub Pagesへ公開されます。
-リポジトリの Settings > Pages で Source が `GitHub Actions` になっていることを確認してください。
+リポジトリの Settings > Pages で Source を `Deploy from a branch`、Branch を `gh-pages`、Folder を `/ (root)` にしてください。
 
 ## 1. ディレクトリ構成
 
